@@ -32,7 +32,8 @@ export default class FullList implements List {
         itemObj._item,
         itemObj._checked
       );
-      FullList.instance.addItem(newListItem);
+      // FullList.instance.addItem(newListItem);
+      this.addItem(newListItem);
     });
   }
 
@@ -45,14 +46,14 @@ export default class FullList implements List {
     this.save();
   }
 
-  addItem(itemObj: ListItem): void {
-    this._list.push(itemObj);
+  addItem(newListItem: ListItem): void {
+    this._list.push(newListItem);
     this.save();
   }
 
   remove(id: String): void {
     this._list = this._list.filter((item: ListItem) => {
-      item.id !== id;
+      return item.id !== id;
     });
     this.save();
   }
